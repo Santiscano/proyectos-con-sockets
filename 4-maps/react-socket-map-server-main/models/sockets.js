@@ -7,7 +7,7 @@ class Sockets {
 
         this.io = io;
 
-        this.marcadores = new Marcadores();
+        this.marcadores = new Marcadores();  // es la clase de marcadores del mapa
 
         this.socketEvents();
     }
@@ -21,7 +21,9 @@ class Sockets {
             socket.on( 'marcador-nuevo', ( marcador ) => {  // { id, lng, lat }
                 this.marcadores.agregarMarcador( marcador );
                 
-                socket.broadcast.emit( 'marcador-nuevo', marcador )
+                socket.broadcast.emit( 'marcador-nuevo', marcador ) // lo reciben todos menos el que lo recibio
+                // this.io.emit( 'marcador-nuevo', marcador ) // lo reciben todos incluido quien lo envio
+
             });
 
             socket.on( 'marcador-actualizado', (marcador) => {

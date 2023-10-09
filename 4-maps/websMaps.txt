@@ -1,0 +1,13 @@
+LAS MEJORES LIBRERIAS PARA CREAR MAPAS INTERACTIVOS EN JAVASCRIPT
+    - BIBLIOGRAFIA SACADA DE https://mappinggis.com/2015/03/las-mejores-apis-javascript-para-webmapping/
+
+1 - https://openlayers.org/
+2 - http://leafletjs.com/
+3 - https://developers.arcgis.com/javascript/latest/
+4 - https://carto.com/developers/carto-js/
+5 - https://www.mapbox.com/
+6 - https://developer.here.com/develop/javascript-api
+7 - https://developers.google.com/maps/?hl=es&gl=ES#MapsAPIs
+
+8 - https://maplibre.org/projects/maplibre-gl-js/
+8.1 - https://mappinggis.com/2022/06/primeros-pasos-con-maplibre-fork-de-codigo-abierto-de-mapbox-gl-js/

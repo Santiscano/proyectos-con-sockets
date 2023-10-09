@@ -9,6 +9,7 @@ export const useMapbox = ( puntoInicial ) => {
     
     // Referencia al DIV del mapa
     const mapaDiv = useRef();
+    // usecallback memoriza el resultado
     const setRef = useCallback( (node) => {
         mapaDiv.current = node;
     },[]);
@@ -25,7 +26,7 @@ export const useMapbox = ( puntoInicial ) => {
     const [ coords, setCoords ] = useState( puntoInicial );
 
     // función para agregar marcadores
-    const agregarMarcador = useCallback( (ev) => {
+    const agregarMarcador = useCallback( ( ev ) => {
 
         const { lng, lat } = ev.lngLat;
 

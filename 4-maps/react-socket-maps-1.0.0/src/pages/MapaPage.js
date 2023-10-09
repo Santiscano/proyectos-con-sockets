@@ -20,6 +20,7 @@ export const MapaPage = () => {
     // Escuchar los marcadores existentes
     useEffect(() => {
         socket.on( 'marcadores-activos', (marcadores) => {
+            // con esto recorremos las llaves del objeto
             for( const key of Object.keys( marcadores ) ) {
                 agregarMarcador( marcadores[key], key );
             }
