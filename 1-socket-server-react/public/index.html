@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket Server</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body class="container">
+
+    <h1 class="mt-5">Acceso denegado</h1>
+    <hr>
+
+    <form id="miFormulario">
+        <div class="row">
+            <div class="col-8">
+                <input type="text" id="txtMensaje" placeholder="mensaje" class="form-control">
+            
+                <div class="col-4">
+                    <button class="btn btn-primary">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+    <div class="row">
+        <div class="col">
+            <ul id="misMensajes">
+                <!-- lista de mensajes -->
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.1/socket.io.js" integrity="sha512-vGcPDqyonHb0c11UofnOKdSAt5zYRpKI4ow+v6hat4i96b7nHSn8PQyk0sT5L9RECyksp+SztCPP6bqeeGaRKg==" crossorigin="anonymous"></script>
+
+    <script>
+        // Conexión con el socket server
+        const socket = io('http://localhost:8080');
+
+        // referencias al html DOM
+        const formulario = document.querySelector('#miFormulario');
+        const mensajes = document.querySelector('#misMensajes');
+        const txtMensaje = document.querySelector('#txtMensaje');
+        
+        formulario.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const nuevoMensaje = txtMensaje.value;
+            socket.emit('mensaje-to-server', {texto: nuevoMensaje})
+        })
+
+
+        /// Para emitir
+        // socket.emit('mensaje-to-server', { data });
+        
+        // Para escuchar
+        socket.on('mensaje-from-server', (data) => {
+            // callback a ejecutar
+            mensajes.innerHTML += `<li>${ data.texto }</li>`;
+        });
+        
+
+    </script>
+    
+</body>
+</html>
