@@ -9,6 +9,6 @@ require('dotenv').config();
 const server = new Server();
 
 // Ejecutar el server
-server.execute();
+server.execute(); 
 
 

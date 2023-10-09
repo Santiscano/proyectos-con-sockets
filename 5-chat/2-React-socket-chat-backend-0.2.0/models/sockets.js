@@ -13,7 +13,7 @@ class Sockets {
         // On connection
         this.io.on('connection', ( socket ) => {
 
-            // TODO: Validar el JWT 
+            // TODO: Validar el JWT  
             // Si el token no es válido, desconectar
 
             // TODO: Saber que usuario está activo mediante el UID

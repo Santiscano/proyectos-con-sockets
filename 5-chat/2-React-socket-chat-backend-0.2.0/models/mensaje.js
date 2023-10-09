@@ -23,7 +23,7 @@ const MensajeSchema = Schema({
 
 
 MensajeSchema.method('toJSON', function() {
-    const { __v, ...object } = this.toObject();
+    const { __v, ...object } = this.toObject(); // con esto elimina el __v del objeto que regresa
     return object;
 });
 
