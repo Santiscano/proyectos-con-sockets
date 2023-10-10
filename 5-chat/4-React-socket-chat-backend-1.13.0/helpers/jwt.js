@@ -23,6 +23,7 @@ const generarJWT = ( uid ) => {
     
 }
 
+
 const comprobarJWT = ( token = '' ) => {
 
     try {

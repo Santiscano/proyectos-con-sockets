@@ -24,16 +24,11 @@ export const SendMessage = () => {
         if ( mensaje.length === 0 ){ return; }
         setMensaje('');
 
-        // TODO: Emitir un evento de sockets para enviar el mensaje
-        // {
-        //     de: // UID del usuario enviando el mensaje
-        //     para: // UID del usuario que recibe el mensaje
-        //     mensaje: // lo que quiero enviar
-        // }
+        // *: Emitir un evento de sockets para enviar el mensaje
         socket.emit( 'mensaje-personal', {
-            de: auth.uid,
-            para: chatState.chatActivo,
-            mensaje
+            de: auth.uid, // UID del usuario enviando el mensaje
+            para: chatState.chatActivo, // UID del usuario que recibe el mensaje
+            mensaje // lo que quiero enviar
         });
 
         // TODO: hacer el dispatch de el mensaje... 

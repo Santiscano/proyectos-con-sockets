@@ -17,39 +17,43 @@ class Sockets {
         // On connection
         this.io.on('connection', async( socket ) => {
 
+            //? AQUI PUEDO VER LO QUE LLEGO POR QUERY
+            // console.log(socket.handshake.query);
+
+            // * Validar el JWT
             const [ valido, uid ] = comprobarJWT( socket.handshake.query['x-token']  );
 
+            // * Si el token no es válido, desconectar
             if ( !valido ) {
                 console.log('socket no identificado');
                 return socket.disconnect();
             }
 
+            // * Actualiza base de datos con usuario conectado
             await usuarioConectado( uid );
 
-            // Unir al usuario a una sala de socket.io
+            // *: Socket join, uid
+            // * Unir al usuario a una sala de socket.io
             socket.join( uid );
 
-            // TODO: Validar el JWT 
-            // Si el token no es válido, desconectar
+            
 
             // TODO: Saber que usuario está activo mediante el UID
 
-            // TODO: Emitir todos los usuarios conectados
+            // *: Emitir todos los usuarios conectados
             this.io.emit( 'lista-usuarios', await getUsuarios() )
 
-            // TODO: Socket join, uid
 
-            // TODO: Escuchar cuando el cliente manda un mensaje
+            // *: Escuchar cuando el cliente manda un mensaje
             socket.on( 'mensaje-personal', async( payload ) => {
                 const mensaje = await grabarMensaje( payload );
+                // payload.para define para quien va el mensaje
                 this.io.to( payload.para ).emit( 'mensaje-personal', mensaje );
                 this.io.to( payload.de ).emit( 'mensaje-personal', mensaje );
             });
             
 
-            // TODO: Disconnect
-            // Marcar en la BD que el usuario se desconecto
-            // TODO: Emitir todos los usuarios conectados
+            // *: Disconnect y actualiza DB con desconectar y lista usuarios
             socket.on('disconnect', async() => {
                 await usuarioDesconectado( uid );
                 this.io.emit( 'lista-usuarios', await getUsuarios() )

@@ -17,6 +17,7 @@ export const SocketProvider = ({ children }) => {
     const { auth } = useContext( AuthContext );
     const { dispatch } = useContext( ChatContext );
 
+    // cada que el auth cambia se validaran los 2 useEffect ya que esta en las dependencias
     useEffect(() => {
         if ( auth.logged ) {
             conectarSocket();

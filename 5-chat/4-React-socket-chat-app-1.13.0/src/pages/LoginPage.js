@@ -18,6 +18,8 @@ export const LoginPage = () => {
     useEffect(() => {
         const email = localStorage.getItem('email');
         if ( email ) {
+            // el form que se recibe como parametro es el mismo que el form del state y en este caso se hizo
+            // con el objetivo de quitar la dependencia del useEffect
             setForm( (form) => ({
                 ...form,
                 email,
@@ -28,6 +30,7 @@ export const LoginPage = () => {
     }, [])
 
 
+    // un solo onchage para todos los inputs!
     const onChange = ({ target }) => {
         const { name, value } = target;
         setForm({
@@ -36,6 +39,7 @@ export const LoginPage = () => {
         });
     }
 
+    // button checkbox
     const toggleCheck = () => {
         console.log('??');
         setForm({

@@ -14,7 +14,7 @@ export const PublicRoute = ({
                     : <Redirect to="/" />
             )} 
         />
-    )
+    ) 
 }
 
 

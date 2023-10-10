@@ -14,10 +14,10 @@ export const useSocket = ( serverPath ) => {
         const socketTemp = io.connect( serverPath, { 
             transports: ['websocket'],
             autoConnect: true,
-            forceNew: true,
+            forceNew: true, // cuando se llame al cliente se crea una nueva conexion y no la conexion anterior
             query: {
                 'x-token': token
-            }
+            } // con query puedo enviar por aqui informacion al backend
         });
         setSocket( socketTemp );
     },[ serverPath ]);

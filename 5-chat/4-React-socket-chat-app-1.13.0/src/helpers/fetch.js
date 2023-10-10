@@ -1,5 +1,6 @@
 const baseUrl = process.env.REACT_APP_API_URL;
 
+// centraliza todos las peticiones en 1 funcion
 export const fetchSinToken = async( endpoint, data, method = 'GET' ) => {
 
     const url = `${ baseUrl }/${ endpoint }`;
