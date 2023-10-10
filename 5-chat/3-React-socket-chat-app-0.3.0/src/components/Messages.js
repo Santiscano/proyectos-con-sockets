@@ -26,7 +26,7 @@ export const Messages = () => {
             </div>
             {/* <!-- Historia Fin --> */}
 
-           <SendMessage />
+            <SendMessage />
 
         </div>
     )
