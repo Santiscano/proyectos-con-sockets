@@ -4,6 +4,13 @@ const { usuarioConectado,
         grabarMensaje,
         getUsuarios } = require('../controllers/sockets');
 
+
+/**
+ * @param {*} emit -> emite al cliente con el nombre que asigne
+ * @param {*} broadcast -> emite a TODOS los clientes 
+ * @param {*} on -> escucha las emisiones del cliente
+ * @param {*} to -> para: es decir para que sea a un usuario en particular 
+ */
 class Sockets {
 
     constructor( io ) {
